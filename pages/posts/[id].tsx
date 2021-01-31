@@ -3,7 +3,8 @@ import {
   InferGetStaticPropsType,
   GetStaticPaths,
 } from "next";
-import {Article} from "../../components/article";
+import Head from "next/head";
+import {Article, BlogpostImage} from "../../components/article";
 import {useRouter} from "next/router";
 import type {Post} from "../index";
 
@@ -11,11 +12,17 @@ export default function BlogPost({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
+  const {title, body} = post;
   console.log(router);
   return (
     <Article>
-      <h1>{post.title}</h1>
-      <p>{post.body}</p>
+      <Head>
+        <title>{title}</title>
+        <meta property="og:title" content={title} />
+      </Head>
+      <h1>{title}</h1>
+      <BlogpostImage src="/MMsZ011.jpg"></BlogpostImage>
+      <p>{body}</p>
     </Article>
   );
 }

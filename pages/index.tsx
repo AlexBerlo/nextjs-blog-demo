@@ -48,7 +48,7 @@ const PostTitle = styled.h2`
 export default function Home({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const title: string = "Cool ass blog";
+  const title: string = "Cool blog";
   return (
     <Container>
       <Head>
